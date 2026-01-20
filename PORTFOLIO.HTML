@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanvi Tanwar | Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f1733;
+      --text:#e9edff;
+      --muted:#aeb6e6;
+      --accent:#7c5cff;
+      --accent2:#00d4ff;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 12px 40px rgba(0,0,0,0.35);
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+    body{
+      background: radial-gradient(800px 400px at 15% 10%, rgba(124,92,255,0.35), transparent),
+                  radial-gradient(700px 350px at 90% 40%, rgba(0,212,255,0.25), transparent),
+                  var(--bg);
+      color: var(--text);
+      min-height:100vh;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:1100px; margin:auto; padding:32px 18px; }
+
+    /* Header */
+    header{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:18px;
+      align-items:stretch;
+      margin-bottom:22px;
+    }
+
+    .hero{
+      background: linear-gradient(135deg, rgba(124,92,255,0.35), rgba(0,212,255,0.12));
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:26px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-80px;
+      top:-80px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background: rgba(0,212,255,0.18);
+      filter: blur(2px);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      color: var(--muted);
+      margin-bottom:14px;
+      width: fit-content;
+    }
+
+    .badge span{
+      width:10px;
+      height:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius:50%;
+      display:inline-block;
+      box-shadow:0 0 20px rgba(124,92,255,0.8);
+    }
+
+    .hero h1{ font-size:40px; line-height:1.1; margin-bottom:8px; }
+    .hero h1 strong{ color: var(--accent2); }
+    .hero p{ color: var(--muted); font-size:15px; max-width: 520px; margin-bottom:16px; }
+
+    .hero .buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:11px 16px;
+      border-radius:14px;
+      font-weight:600;
+      font-size:14px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.10);
+      transition: all 0.2s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .btn.primary{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#001018;
+      border:none;
+    }
+
+    .btn.secondary{
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    .btn:hover{ transform: translateY(-2px); }
+
+    /* Profile Card */
+    .profile{
+      background: rgba(15,23,51,0.75);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      backdrop-filter: blur(10px);
+    }
+
+    .avatar{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .circle{
+      width:62px;
+      height:62px;
+      border-radius:18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:grid;
+      place-items:center;
+      color:#07101d;
+      font-weight:900;
+      font-size:18px;
+    }
+
+    .avatar h2{ font-size:18px; margin:0; }
+    .avatar p{ font-size:13px; color: var(--muted); }
+
+    .info{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .info-item{
+      border:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      padding:12px;
+      border-radius:16px;
+      font-size:14px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .info-item strong{ color: var(--text); font-weight:600; }
+
+    /* Layout Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .card{
+      background: rgba(15,23,51,0.78);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3{
+      font-size:16px;
+      margin-bottom:14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius:50%;
+      display:inline-block;
+      box-shadow:0 0 18px rgba(0,212,255,0.5);
+    }
+
+    .list{
+      display:grid;
+      gap:12px;
+    }
+
+    .pill{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      border:1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.05);
+      padding:12px 14px;
+      border-radius:16px;
+      font-size:14px;
+    }
+
+    .pill span{ color: var(--muted); font-size:12.5px; }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      padding:9px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:18px;
+      text-align:center;
+      color: rgba(255,255,255,0.5);
+      font-size:13px;
+      padding:16px 10px;
+    }
+
+    /* Responsive */
+    @media(max-width: 900px){
+      header{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size:34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="hero">
+        <div class="badge"><span></span> Creative Portfolio • Organized & Professional</div>
+        <h1>Hi, I'm <strong>Tanvi Tanwar</strong></h1>
+        <p>
+          A motivated, creative and career-focused student, passionate about learning, 
+          improving skills and building a strong future. I love working in teams, 
+          communicating confidently, and delivering impactful work.
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#contact">📩 Contact Me</a>
+          <a class="btn secondary" href="#projects">💼 Projects</a>
+          <a class="btn secondary" href="#skills">⚡ Skills</a>
+        </div>
+      </div>
+
+      <div class="profile">
+        <div>
+          <div class="avatar">
+            <div class="circle">TT</div>
+            <div>
+              <h2>Tanvi Tanwar</h2>
+              <p>Student • Learner • Creator</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info-item"><strong>Location</strong> <span>Gurgaon, India</span></div>
+            <div class="info-item"><strong>Email</strong> <span>tanvitanwar@gmail.com</span></div>
+            <div class="info-item"><strong>Phone</strong> <span>+91-XXXXXXXXXX</span></div>
+            <div class="info-item"><strong>LinkedIn</strong> <span>linkedin.com/in/_____</span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <section class="grid">
+
+      <!-- About -->
+      <div class="card" id="about">
+        <h3><span class="dot"></span> About Me</h3>
+        <p style="color: var(--muted); font-size:14px; line-height:1.8;">
+          I am an enthusiastic and hardworking individual with strong communication skills.
+          I believe in growth, consistency and learning through experience. I enjoy being 
+          creative and organized in every task I do.
+        </p>
+      </div>
+
+      <!-- Education -->
+      <div class="card" id="education">
+        <h3><span class="dot"></span> Education</h3>
+        <div class="list">
+          <div class="pill">
+            <div>
+              <strong>Bachelor’s Degree</strong><br/>
+              <span>College/University: ________</span>
+            </div>
+            <span>Year: ____</span>
+          </div>
+          <div class="pill">
+            <div>
+              <strong>Class 12th</strong><br/>
+              <span>School: ________</span>
+            </div>
+            <span>Year: ____</span>
+          </div>
+          <div class="pill">
+            <div>
+              <strong>Class 10th</strong><br/>
+              <span>School: ________</span>
+            </div>
+            <span>Year: ____</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="card" id="skills">
+        <h3><span class="dot"></span> Skills</h3>
+        <div class="skills">
+          <div class="tag">Communication</div>
+          <div class="tag">Public Speaking</div>
+          <div class="tag">Leadership</div>
+          <div class="tag">Teamwork</div>
+          <div class="tag">Time Management</div>
+          <div class="tag">Research</div>
+          <div class="tag">MS Word</div>
+          <div class="tag">MS PowerPoint</div>
+          <div class="tag">Basic Excel</div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="card" id="experience">
+        <h3><span class="dot"></span> Experience</h3>
+        <div class="list">
+          <div class="pill">
+            <div>
+              <strong>Internship / Training</strong><br/>
+              <span>Company / Office: ________</span>
+            </div>
+            <span>Duration: ____</span>
+          </div>
+          <div class="pill">
+            <div>
+              <strong>Volunteer Work</strong><br/>
+              <span>Organization: ________</span>
+            </div>
+            <span>Duration: ____</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="card" id="projects">
+        <h3><span class="dot"></span> Projects</h3>
+        <div class="list">
+          <div class="pill">
+            <div>
+              <strong>Project 01</strong><br/>
+              <span>Short description about your work</span>
+            </div>
+            <span>202_</span>
+          </div>
+          <div class="pill">
+            <div>
+              <strong>Project 02</strong><br/>
+              <span>Short description about your work</span>
+            </div>
+            <span>202_</span>
+          </div>
+          <div class="pill">
+            <div>
+              <strong>Project 03</strong><br/>
+              <span>Short description about your work</span>
+            </div>
+            <span>202_</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="card" id="achievements">
+        <h3><span class="dot"></span> Achievements</h3>
+        <div class="list">
+          <div class="pill"><strong>🏆 Achievement 01</strong> <span>Details</span></div>
+          <div class="pill"><strong>🌟 Achievement 02</strong> <span>Details</span></div>
+          <div class="pill"><strong>🎖️ Achievement 03</strong> <span>Details</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact" style="margin-top:16px;">
+      <h3><span class="dot"></span> Contact</h3>
+      <p style="color: var(--muted); font-size:14px; line-height:1.8;">
+        Feel free to connect with me for internships, collaborations, or professional opportunities.
+      </p>
+
+      <div class="list" style="margin-top:12px;">
+        <div class="pill"><strong>Email</strong> <span>tanvitanwar@gmail.com</span></div>
+        <div class="pill"><strong>Phone</strong> <span>+91-XXXXXXXXXX</span></div>
+        <div class="pill"><strong>LinkedIn</strong> <span>linkedin.com/in/_____</span></div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Tanvi Tanwar • Designed with ❤️ in HTML
+    </footer>
+  </div>
+</body>
+</html>
